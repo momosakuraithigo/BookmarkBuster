@@ -50,3 +50,11 @@ Railsのシンプルなモデル構造でタグを管理し、ユーザーが分
 保存したURLに類似する記事を自動でリストアップし、興味のある分野の積読を効率的に整理する。
 ここでは、BERTなどの自然言語処理モデルを利用して関連度を判定する方針です。
 
+### 画面遷移図
+https://www.figma.com/design/C0WOo4oj50h2lFe97cJD7O/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&node-type=canvas&t=RoOWWscpAgmAS7XR-0
+
+### ER図
+![bookmarkbuster_er_diagram](https://github.com/user-attachments/assets/25f33f61-aa2c-485d-a37f-561404d229c0)
+
+
+
