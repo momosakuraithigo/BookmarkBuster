@@ -3,15 +3,26 @@ class BookmarksController < ApplicationController
   before_action :set_bookmark, only: %i[show edit update destroy]
 
   def index
-    @bookmarks = if params[:tag_name].present?
-                   current_user.bookmarks.joins(:tags).where(tags: { name: params[:tag_name] })
-                 else
-                   current_user.bookmarks
-                 end.page(params[:page]).per(10)
+    @bookmarks = current_user.bookmarks
+
+    # 未読/既読フィルタリング
+    if params[:filter] == 'unread'
+      @bookmarks = @bookmarks.where(status: '未読')
+    elsif params[:filter] == 'read'
+      @bookmarks = @bookmarks.where(status: '既読')
+    end
+
+    # タグでの絞り込み
+    if params[:tag_name].present?
+      @bookmarks = @bookmarks.joins(:tags).where(tags: { name: params[:tag_name] })
+    end
+
+    @bookmarks = @bookmarks.page(params[:page]).per(10)
 
     # タグ一覧を取得（N+1問題を防ぐためincludes使用）
     @tags = current_user.bookmarks.includes(:tags).map(&:tags).flatten.uniq
   end
+
 
   def show
     # `@bookmark` は `set_bookmark` によりセットされます
