@@ -1,0 +1,22 @@
+<h1>ブックマーク詳細</h1>
+
+<p><strong>URL:</strong> <%= @bookmark.url %></p>
+<p><strong>タイトル:</strong> <%= @bookmark.title %></p>
+<p><strong>ステータス:</strong> <%= @bookmark.status %></p>
+
+<% if @bookmark.tags.any? %>
+  <p><strong>タグ:</strong> <%= @bookmark.tags.map(&:name).join(', ') %></p>
+<% else %>
+  <p><strong>タグ:</strong> タグはありません</p>
+<% end %>
+
+<%= link_to '編集', edit_bookmark_path(@bookmark), class: 'btn btn-primary' %>
+<%= link_to '戻る', bookmarks_path, class: 'btn btn-secondary' %>
+<%= link_to '削除', 
+            bookmark_path(@bookmark),
+            class: 'btn btn-danger',
+            data: { 
+              turbo_method: :delete,
+              turbo_confirm: '削除してもよろしいですか？'
+            }
+        %>

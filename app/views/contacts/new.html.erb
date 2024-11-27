@@ -1,0 +1,45 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="h4 mb-0">お問い合わせ</h1>
+        </div>
+        
+        <div class="card-body">
+          <%= form_with(model: @contact, local: true) do |f| %>
+            <% if @contact.errors.any? %>
+              <div class="alert alert-danger">
+                <ul class="mb-0">
+                  <% @contact.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="mb-3">
+              <%= f.label :name, '名前', class: 'form-label' %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :email, 'メールアドレス', class: 'form-label' %>
+              <%= f.email_field :email, class: 'form-control' %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :message, 'メッセージ', class: 'form-label' %>
+              <%= f.text_area :message, rows: 5, class: 'form-control' %>
+            </div>
+
+            <div class="text-center">
+              <%= f.submit '送信', class: 'btn btn-primary' %>
+              <%= link_to 'キャンセル', root_path, class: 'btn btn-secondary ms-2' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
