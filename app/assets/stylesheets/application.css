@@ -47,6 +47,17 @@ main {
   max-width: 1200px;
 }
 
+.tag-suggestion {
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 3px;
+  border-radius: 15px;
+  font-size: 14px;
+}
+.tag-suggestion:hover {
+  background-color: #f0f0f0;
+}
+
 /* モバイル対応の調整 */
 @media (max-width: 768px) {
   .navbar-brand {
