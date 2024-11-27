@@ -24,9 +24,7 @@ test:
 # is mounted as a persistent Docker volume in config/deploy.yml.
 # PostgreSQL for production
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  <<: *default
   database: <%= ENV.fetch("DATABASE_NAME", "bookmark_buster_production") %>
   username: <%= ENV.fetch("DATABASE_USER", "your_postgres_user") %>
   password: <%= ENV.fetch("DATABASE_PASSWORD", "your_postgres_password") %>
