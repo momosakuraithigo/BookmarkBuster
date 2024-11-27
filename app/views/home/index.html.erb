@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-4 fw-bold">BookmarkBuster へようこそ!</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">
+        効率的なブックマーク管理ツールで、あなたのウェブ体験をもっと快適に。
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-primary btn-lg px-4 gap-3' %>
+        <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-outline-secondary btn-lg px-4' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="col d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <i class="bi bi-bookmarks"></i>
+      </div>
+      <div>
+        <h2>簡単管理</h2>
+        <p>ブックマークの追加、編集、削除が簡単にできます。</p>
+      </div>
+    </div>
+    <div class="col d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <i class="bi bi-tags"></i>
+      </div>
+      <div>
+        <h2>タグ機能</h2>
+        <p>タグを使って効率的に整理・検索できます。</p>
+      </div>
+    </div>
+    <div class="col d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <i class="bi bi-share"></i>
+      </div>
+      <div>
+        <h2>共有機能</h2>
+        <p>ブックマークを他のユーザーと共有できます。</p>
+      </div>
+    </div>
+  </div>
+</div>
