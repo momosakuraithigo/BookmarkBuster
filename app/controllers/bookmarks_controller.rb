@@ -1,6 +1,16 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_bookmark, only: %i[show edit update destroy]
+  before_action :set_bookmark, only: %i[show edit update destroy toggle_favorite]
+
+  def toggle_favorite
+    @bookmark = current_user.bookmarks.find(params[:id])
+  
+    if @bookmark.update(favorite: !@bookmark.favorite)
+      redirect_to bookmarks_path, notice: 'お気に入りを更新しました。'
+    else
+      redirect_to bookmarks_path, alert: 'お気に入りの更新に失敗しました。'
+    end
+  end
 
   def index
     @bookmarks = current_user.bookmarks

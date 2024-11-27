@@ -1,0 +1,32 @@
+<turbo-stream target="<%= dom_id(@bookmark) %>" action="replace">
+  <template>
+    <tr id="<%= dom_id(@bookmark) %>">
+      <td>
+        <%= button_to @bookmark.favorite ? '★' : '☆',
+            toggle_favorite_bookmark_path(@bookmark),
+            method: :patch,
+            class: "btn btn-link p-0 text-warning",
+            remote: true %>
+      </td>
+      <td><%= link_to @bookmark.url, @bookmark.url, target: "_blank" %></td>
+      <td><%= @bookmark.title %></td>
+      <td>
+        <% @bookmark.tags.each do |tag| %>
+          <span class="badge bg-secondary"><%= tag.name %></span>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to '詳細', bookmark_path(@bookmark), class: 'btn btn-info btn-sm' %>
+        <%= link_to '編集', edit_bookmark_path(@bookmark), class: 'btn btn-warning btn-sm' %>
+        <%= link_to '削除', 
+            bookmark_path(@bookmark),
+            class: 'btn btn-danger btn-sm',
+            data: { 
+              turbo_method: :delete,
+              turbo_confirm: '削除してもよろしいですか？'
+            }
+        %>
+      </td>
+    </tr>
+  </template>
+</turbo-stream>

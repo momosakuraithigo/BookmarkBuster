@@ -27,6 +27,9 @@ Rails.application.routes.draw do
       get 'unread', to: 'bookmarks#index', defaults: { filter: 'unread' }
       get 'read', to: 'bookmarks#index', defaults: { filter: 'read' }
     end
+    member do
+      patch :toggle_favorite
+    end
   end
 
   # プロフィール
